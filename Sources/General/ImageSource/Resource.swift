@@ -47,19 +47,19 @@ extension Resource {
         let key = overrideCacheKey ?? cacheKey
         return downloadURL.isFileURL ?
             .provider(LocalFileImageDataProvider(fileURL: downloadURL, cacheKey: key)) :
-            .network(KF.ImageResource(downloadURL: downloadURL, cacheKey: key))
+            .network(KF.KfImageResource(downloadURL: downloadURL, cacheKey: key))
     }
 }
 
 @available(*, deprecated, message: "This type conflicts with `GeneratedAssetSymbols.ImageResource` in Swift 5.9. Renamed to avoid issues in the future.", renamed: "KF.ImageResource")
-public typealias ImageResource = KF.ImageResource
+public typealias ImageResource = KF.KfImageResource
 
 
 extension KF {
     /// ImageResource is a simple combination of `downloadURL` and `cacheKey`.
     /// When passed to image view set methods, Kingfisher will try to download the target
     /// image from the `downloadURL`, and then store it with the `cacheKey` as the key in cache.
-    public struct ImageResource: Resource {
+    public struct KfImageResource: Resource {
 
         // MARK: - Initializers
 
